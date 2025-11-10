@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from "#models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 
 export const signUp = async (req, res) => {
   try {
-    const { name, email, passowrd } = req.body;
+    const { name, email, password } = req.body;
 
     //check if user already exists
     const existingUser = await User.findOne({ email });
@@ -15,7 +15,7 @@ export const signUp = async (req, res) => {
     }
 
     //has password before saving
-    const hashedPassword = await bcrypt.hash(passowrd, 12);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     const user = await User.create({
       name,

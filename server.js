@@ -1,3 +1,4 @@
+import "module-alias/register.js";
 import app from "./app.js";
 import { ConnectDb } from "./config.js";
 import dotenv from "dotenv";
